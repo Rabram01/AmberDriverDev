@@ -1,0 +1,54 @@
+<!--
+  Generated template for the HomePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div>
+    <p>Username : {{(profileDriveData | async)?.username}}</p>
+    <p>Nom : {{(profileDriveData | async)?.nom}}</p>
+    <p>Prenom : {{(profileDriveData | async)?.prenom}}</p>
+    <button ion-button (click)="getGeolocation()">Position</button>
+  </div>
+  
+  <div *ngIf="geoPosition">
+    <ion-card>
+      <ion-card-header>
+        Accuracy :
+      </ion-card-header>
+      <ion-card-content>
+        {{geoPosition.coords.accuracy}}
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>
+        Latitute :
+      </ion-card-header>
+      <ion-card-content>
+        {{geoPosition.coords.latitude}}
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>
+        Longitude :
+      </ion-card-header>
+      <ion-card-content>
+        {{geoPosition.coords.longitude}}
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <h3>Current Latitude: {{tracking.lat}}</h3>
+  <h3>Current Longitude: {{tracking.lng}}</h3>
+  <button ion-button full primary (click)="start()">Start Tracking</button>
+  <button ion-button full primary (click)="stop()">Stop Tracking</button>
+</ion-content>
